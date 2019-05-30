@@ -32,7 +32,7 @@ app.engine("handlebars", exphbs({
 app.set("view engine", "handlebars");
 
 
-app.get("/main", function(req, res) {
+app.get("/", function(req, res) {
     res.render("index", { });
   });
 
