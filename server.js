@@ -32,7 +32,7 @@ app.engine("handlebars", exphbs({
 app.set("view engine", "handlebars");
 
 
-app.get("/", function(req, res) {
+app.get("/main", function(req, res) {
     res.render("index", { });
   });
 
@@ -45,7 +45,9 @@ app.get("/", function(req, res) {
 
 var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/mongoHeadliners66";
 
-mongoose.connect(MONGODB_URI);
+mongoose.connect(MONGODB_URI,{ useNewUrlParser: true });
+// mongoose.connect(config.DB,{ useNewUrlParser: true }));
+
 
 
 // Routes
