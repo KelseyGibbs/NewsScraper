@@ -13,21 +13,14 @@ $(document).on("click", ".scrape-new", function () {
             $.getJSON("/articles", function (data) {
                 // For each one
                 for (var i = 0; i < data.length; i++) {
-                    // var emptyDiv = $("<div class=stuff'>")
-                    // var title = $("<h3 data-id='" + data[i]._id + "'class='title' ><a href='" + data[i].link +"'>" + data[i].title + "</a></h3>");
-                    // var summary = $("<p>" + data[i].summary + "</p>")
+                    var emptyDiv = $("<div class=stuff'>")
+                    var title = $("<h3" + "'class='title' ><a href='" + data[i].link +"'>" + data[i].title + "</a></h3>");
+                    var summary = $("<p data-id='" + data[i]._id + "'>" + data[i].summary + "</p>")
                     
-                    // emptyDiv.append(title);
-                    // emptyDiv.append(summary);
+                    emptyDiv.append(title);
+                    emptyDiv.append(summary);
                     
-                    // $("#articles").append(emptyDiv);
-
-
-                    // <p><a href="https://www.w3schools.com" data-id="data[i]._id">W3Schools.com</a></p>
-                    
-                    console.log(data[i]._id)
-                    // Display the information on the page
-                    $("#articles").append("<p data-id='" + data[i]._id + "'<br>" + data[i].title + "<br />" + data[i].link + "<br />" + data[i].summary + "</p>");
+                    $("#articles").append(emptyDiv);
                 }
             });
         })
