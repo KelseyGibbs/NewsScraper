@@ -32,3 +32,12 @@ textarea {
   font-size: 18px;
 }
 
+p:hover {
+  font-weight: bold;
+}
+
+@media only screen and (min-width: 600px) {
+  img.img-fluid {
+    max-height: 3in;
+  }
+}

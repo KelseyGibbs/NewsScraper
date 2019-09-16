@@ -1,23 +1,18 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
   <a class="navbar-brand" href="#">Mongo Scraper</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText"
-    aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarText">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="#">Home<span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item">
+  <div class="navbar" id="navbarText">
         <a class="btn btn-danger scrape-new">SCRAPE NEW ARTICLES!</a>
-      </li>
-    </ul>
   </div>
 </nav>
 <img src="/images/newspaper.jpeg" class="img-fluid" alt="Responsive Newspaper Image" width="100%">
 <div class="container">
   <div id="wrapper">
+    <div id="welcome">
+      <h4>Welcome to Mongo Scraper!</h4>
+      <text>When the 
+        <a class="btn btn-small btn-danger scrape-new">
+          SCRAPE NEW ARTICLES!</a> button is clicked, the newest articles from NPR are scraped from their website. The articles are then displayed for you to comment on. If you click on an article summary, a text area will appear on the screen for taking notes. </text>
+    </div>
     <div id="articles"></div>
     <div id="notes"></div>
   </div>

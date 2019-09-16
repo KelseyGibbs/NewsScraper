@@ -1,5 +1,6 @@
 // When the "scrape new" button is clicked on
 $(document).on("click", ".scrape-new", function () {
+  $("#welcome").empty();
 
     // Empty the articles from the articles section
     $("#articles").empty();
@@ -11,10 +12,10 @@ $(document).on("click", ".scrape-new", function () {
         })
         .then(function (data) {
             $.getJSON("/articles", function (data) {
-                // For each one
-                for (var i = 0; i < data.length; i++) {
+                // Loop through the articles backwards to display the newest 30 articles first
+                for (var i = data.length - 1; i >= 0; i--) {
                     var emptyDiv = $("<div class=stuff'>")
-                    var title = $("<h3" + "'class='title' ><a href='" + data[i].link +"'>" + data[i].title + "</a></h3>");
+                    var title = $("<h3" + "'class='title' ><a href='" + data[i].link +"'target='_blank'>" + data[i].title + "</a></h3>");
                     var summary = $("<p data-id='" + data[i]._id + "'>" + data[i].summary + "</p>")
                     
                     emptyDiv.append(title);
@@ -44,13 +45,13 @@ $(document).on("click", "p", function() {
       .then(function(data) {
         console.log(data);
         // The title of the article
-        $("#notes").append("<h2>" + data.title + "</h2>");
+        $("#notes").append("<h6>" + data.title + "</h6>");
         // An input to enter a new title
-        $("#notes").append("<input id='titleinput' name='title' >");
+        $("#notes").append("<input id='titleinput' name='title' placeholder='Your Name'>");
         // A textarea to add a new note body
-        $("#notes").append("<textarea id='bodyinput' name='body'></textarea>");
+        $("#notes").append("<textarea id='bodyinput' name='body' placeholder='Leave a note about the article here.'></textarea>");
         // A button to submit a new note, with the id of the article saved to it
-        $("#notes").append("<button data-id='" + data._id + "' id='savenote'>Save Note</button>");
+        $("#notes").append("<button class='btn' data-id='" + data._id + "' id='savenote'>Save Note</button>");
   
         // If there's a note in the article
         if (data.note) {
@@ -65,6 +66,7 @@ $(document).on("click", "p", function() {
   // When you click the savenote button
   $(document).on("click", "#savenote", function() {
     // Grab the id associated with the article from the submit button
+    event.preventDefault();
     var thisId = $(this).attr("data-id");
   
     // Run a POST request to change the note, using what's entered in the inputs
